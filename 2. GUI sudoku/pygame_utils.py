@@ -70,7 +70,9 @@ class Grid:
 
     # rendering the screen while solving sudoku
     def render(self, button, answers, positions):
-        pygame.time.Clock().tick(15)
+        
+        pygame.time.Clock().tick(15)  # 15 is the FPS, increase it for a faster solving
+
         for event in pygame.event.get():
             # check for closing window
             if event.type == pygame.QUIT:

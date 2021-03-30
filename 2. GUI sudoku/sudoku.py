@@ -6,7 +6,7 @@ from pygame_utils import *
 
 SIZE = 9
 
-def isFilled(GRID):
+def isfilled(GRID):
     for row in GRID:
         if 0 in row:
             return False
@@ -14,7 +14,7 @@ def isFilled(GRID):
     return True
 
 
-def isValid(GRID, pos):
+def isvalid(GRID, pos):
 
     x, y = pos
     item = GRID[x][y]
@@ -66,8 +66,8 @@ def generate_sudoku(GRID):
             random.shuffle(nums)
             for value in nums:
                 GRID[row][col] = value
-                if isValid(GRID, (row, col)):
-                    if isFilled(GRID):
+                if isvalid(GRID, (row, col)):
+                    if isfilled(GRID):
                         return True
                     else:
                         if generate_sudoku(GRID):
@@ -102,7 +102,7 @@ def solve_sudoku(grid, pos, answers, positions, screen, button):
             GRID[x][y] = i + 1
             answers.append((x, y))
 
-            if isValid(GRID, pos) and solve_sudoku(grid, (x, y + 1), answers, positions, screen, button):
+            if isvalid(GRID, pos) and solve_sudoku(grid, (x, y + 1), answers, positions, screen, button):
                 return True
 
             GRID[x][y] = 0
